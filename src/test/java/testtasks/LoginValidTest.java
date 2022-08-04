@@ -15,18 +15,17 @@ import pageobject.LoginPage;
 import pageobject.RegisterPage;
 import precondition.TestData;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.page;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(Parameterized.class)
 public class LoginValidTest {
-    LoginPage loginPage = page(LoginPage.class);
-    HomePage homePage = page(HomePage.class);
-    ForgotPasswordPage forgotPasswordPage = page(ForgotPasswordPage.class );
-    RegisterPage registerPage = page(RegisterPage.class);
-    WorkWithUserAccount userAccount = new WorkWithUserAccount();
-    TestData testData = new TestData();
+    private final LoginPage loginPage = page(LoginPage.class);
+    private final HomePage homePage = page(HomePage.class);
+    private final ForgotPasswordPage forgotPasswordPage = page(ForgotPasswordPage.class );
+    private final RegisterPage registerPage = page(RegisterPage.class);
+    private final WorkWithUserAccount userAccount = new WorkWithUserAccount();
+    private static final TestData testData = new TestData();
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
     public String browser;
@@ -86,7 +85,7 @@ public class LoginValidTest {
     //Пытаемся удалить созданного пользователя
     @After
     public void clearData() {
-        userAccount.deleteUser(testData.getEmail(),testData.getPassword());
         WebDriverRunner.getWebDriver().close();
+        userAccount.deleteUser(testData.getEmail(),testData.getPassword());
     }
 }

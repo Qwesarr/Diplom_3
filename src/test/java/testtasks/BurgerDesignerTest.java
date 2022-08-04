@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class BurgerDesignerTest {
-    HomePage homePage = page(HomePage.class);
+    private final HomePage homePage = page(HomePage.class);
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
     public String browser;
@@ -32,24 +32,25 @@ public class BurgerDesignerTest {
 
     @DisplayName("Проверяем прокрутку до булок {browser}")
     @Test
-    public void scrollToBunTest() {
-        homePage.clickFillingScroll();                   //Так как булки по дефолту сверху, сначала прокрутим в низ.
+    public void scrollToBunTest() throws InterruptedException {
+        homePage.clickSauceScroll();                                                                                    //Так как булки по дефолту выбраны, сначала прокрутим в низ.
+        homePage.waitSauceScrollCurrentButton();
         homePage.clickBunsScrollButton();
-        assertTrue(homePage.waitBunsInScrollTex());
+        assertTrue(homePage.waitBunScrollCurrentButton());
     }
 
     @DisplayName("Проверяем прокрутку до соуса")
     @Test
     public void scrollToSauceTest() {
         homePage.clickSauceScroll();
-        assertTrue(homePage.waitSauceInScrollText());
+        assertTrue(homePage.waitSauceScrollCurrentButton());
     }
 
     @DisplayName("Проверяем прокрутку до начинки")
     @Test
     public void scrollToFillingTest() {
         homePage.clickFillingScroll();
-        assertTrue(homePage.waitFillingInScrollText());
+        assertTrue(homePage.waitFillingScrollCurrentButton());
     }
 
     @After

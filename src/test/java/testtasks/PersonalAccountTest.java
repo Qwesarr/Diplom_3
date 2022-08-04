@@ -10,17 +10,16 @@ import org.junit.runners.Parameterized;
 import pageobject.*;
 import precondition.TestData;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.page;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(Parameterized.class)
 public class PersonalAccountTest {
-    AccountProfilePage accountProfilePage = page(AccountProfilePage.class);
-    LoginPage loginPage = page(LoginPage.class);
-    HomePage homePage = page(HomePage.class);
-    WorkWithUserAccount userAccount = new WorkWithUserAccount();
-    TestData testData = new TestData();
+    private final AccountProfilePage accountProfilePage = page(AccountProfilePage.class);
+    private final LoginPage loginPage = page(LoginPage.class);
+    private final HomePage homePage = page(HomePage.class);
+    private final WorkWithUserAccount userAccount = new WorkWithUserAccount();
+    private static final TestData testData = new TestData();
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
     public String browser;
@@ -71,7 +70,7 @@ public class PersonalAccountTest {
     //Пытаемся удалить созданного пользователя
     @After
     public void clearData() {
-        userAccount.deleteUser(testData.getEmail(),testData.getPassword());
         WebDriverRunner.getWebDriver().close();
+        userAccount.deleteUser(testData.getEmail(),testData.getPassword());
     }
 }

@@ -13,14 +13,16 @@ import additionclass.OpenWebBrowser;
 import precondition.TestData;
 
 import static com.codeborne.selenide.Selenide.*;
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(Parameterized.class)
 public class RegistrationUserTest {
-    RegisterPage registerPage = page(RegisterPage.class);
-    LoginPage loginPage = page(LoginPage.class);
-    WorkWithUserAccount userAccount = new WorkWithUserAccount();
-    TestData testData = new TestData();
+    private final RegisterPage registerPage = page(RegisterPage.class);
+    private final LoginPage loginPage = page(LoginPage.class);
+    private final WorkWithUserAccount userAccount = new WorkWithUserAccount();
+    private static final TestData testData = new TestData();
+    private static final String errorText = "Некорректный пароль";
 
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
@@ -52,13 +54,13 @@ public class RegistrationUserTest {
     public void createNewUserWithIncorrectPasswordTest() {
         registerPage.newClientRegistration(testData.getName(),testData.getEmail(),testData.getShortPassword());
         registerPage.clickRegistrationButton();
-        System.out.println(registerPage.getRegistrationFailText());
+        assertEquals(errorText,registerPage.getRegistrationFailText());
     }
 
 
     @After
     public void clearData() {
-        userAccount.deleteUser(testData.getEmail(),testData.getPassword());
         WebDriverRunner.getWebDriver().close();
+        userAccount.deleteUser(testData.getEmail(),testData.getPassword());
     }
 }

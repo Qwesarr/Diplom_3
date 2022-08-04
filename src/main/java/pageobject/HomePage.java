@@ -1,7 +1,6 @@
 package pageobject;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
@@ -38,6 +37,14 @@ public class HomePage {
         bunsScrollButton.click();
     }
 
+    //кнопка прокрутки до булок, когда выполнена прокрутка до соуса (по нажатию, или через ручную прокрутку). Файндер получается каким то сложным
+    @FindBy(xpath = ".//div[contains(@class,'tab_tab_type_current')]/span[contains(@class,'text')][contains(text(),'Булки')]")
+    private SelenideElement bunScrollCurrentButton;
+    public boolean waitBunScrollCurrentButton(){
+        bunScrollCurrentButton.shouldBe(visible);
+        return bunScrollCurrentButton.exists();
+    }
+
     //Прокрутка до соуса
     @FindBy(xpath = ".//span[contains(@class,'text')][contains(text(),'Соусы')]/..")
     private SelenideElement sauceScrollButton;
@@ -45,6 +52,15 @@ public class HomePage {
     public void clickSauceScroll() {
         sauceScrollButton.click();
     }
+
+    //кнопка прокрутки до соуса, когда выполнена прокрутка до соуса (по нажатию, или через ручную прокрутку). Файндер получается каким то сложным
+    @FindBy(xpath = ".//div[contains(@class,'tab_tab_type_current')]/span[contains(@class,'text')][contains(text(),'Соусы')]")
+    private SelenideElement sauceScrollCurrentButton;
+    public boolean waitSauceScrollCurrentButton(){
+        sauceScrollCurrentButton.shouldBe(visible);
+        return sauceScrollCurrentButton.exists();
+    }
+
     //Прокрутка до начинки
     @FindBy(xpath = ".//span[contains(@class,'text')][contains(text(),'Начинки')]/..")
     private SelenideElement fillingScrollButton;
@@ -52,28 +68,12 @@ public class HomePage {
         fillingScrollButton.click();
     }
 
-    //Текст "Булки" в прокручиваемом списке
-    @FindBy(xpath = ".//h2[contains(@class,'text')][contains(text(),'Булки')]")
-    private SelenideElement bunsInScrollText;
-    public Boolean waitBunsInScrollTex(){
-        bunsInScrollText.shouldBe(visible);
-        return bunsInScrollText.isDisplayed();
-    }
-
-    //Текст "Соусы" в прокручиваемом списке
-    @FindBy(xpath = ".//h2[contains(@class,'text')][contains(text(),'Соусы')]")
-    private SelenideElement sauceInScrollText;
-    public Boolean waitSauceInScrollText(){
-        sauceInScrollText.shouldBe(visible);
-        return sauceInScrollText.isDisplayed();
-    }
-
-    //Текст "Начинки" в прокручиваемом списке
-    @FindBy(xpath = ".//h2[contains(@class,'text')][contains(text(),'Начинки')]")
-    private SelenideElement fillingInScrollText;
-    public Boolean waitFillingInScrollText(){
-        fillingInScrollText.shouldBe(visible);
-        return fillingInScrollText.isDisplayed();
+    //кнопка прокрутки до начинки, когда выполнена прокрутка до соуса (по нажатию, или через ручную прокрутку). Файндер получается каким то сложным
+    @FindBy(xpath = ".//div[contains(@class,'tab_tab_type_current')]/span[contains(@class,'text')][contains(text(),'Начинки')]")
+    private SelenideElement fillingScrollCurrentButton;
+    public boolean waitFillingScrollCurrentButton(){
+        fillingScrollCurrentButton.shouldBe(visible);
+        return fillingScrollCurrentButton.exists();
     }
 
 }
