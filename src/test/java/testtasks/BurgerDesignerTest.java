@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class BurgerDesignerTest {
-    private final HomePage homePage = page(HomePage.class);
+    private HomePage homePage = page(HomePage.class);
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
     public String browser;
@@ -30,7 +30,7 @@ public class BurgerDesignerTest {
         OpenWebBrowser.openPageSelector(browser, HomePage.URL);
     }
 
-    @DisplayName("Проверяем прокрутку до булок {browser}")
+    @DisplayName("Проверяем прокрутку до булок ")
     @Test
     public void scrollToBunTest() throws InterruptedException {
         homePage.clickSauceScroll();                                                                                    //Так как булки по дефолту выбраны, сначала прокрутим в низ.

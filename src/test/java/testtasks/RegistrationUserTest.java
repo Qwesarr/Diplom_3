@@ -18,11 +18,11 @@ import static junit.framework.TestCase.assertTrue;
 
 @RunWith(Parameterized.class)
 public class RegistrationUserTest {
-    private final RegisterPage registerPage = page(RegisterPage.class);
-    private final LoginPage loginPage = page(LoginPage.class);
-    private final WorkWithUserAccount userAccount = new WorkWithUserAccount();
-    private static final TestData testData = new TestData();
-    private static final String errorText = "Некорректный пароль";
+    private RegisterPage registerPage = page(RegisterPage.class);
+    private LoginPage loginPage = page(LoginPage.class);
+    private WorkWithUserAccount userAccount = new WorkWithUserAccount();
+    private static TestData testData = new TestData();
+    private static final String ERROR_TEXT = "Некорректный пароль";
 
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
@@ -54,7 +54,7 @@ public class RegistrationUserTest {
     public void createNewUserWithIncorrectPasswordTest() {
         registerPage.newClientRegistration(testData.getName(),testData.getEmail(),testData.getShortPassword());
         registerPage.clickRegistrationButton();
-        assertEquals(errorText,registerPage.getRegistrationFailText());
+        assertEquals(ERROR_TEXT,registerPage.getRegistrationFailText());
     }
 
 

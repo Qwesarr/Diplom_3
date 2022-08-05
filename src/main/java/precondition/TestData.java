@@ -1,22 +1,22 @@
 package precondition;
 
 public class TestData {
-   private static final String name = "Qwesar";
-   private static final String email = "Qwesar@list.ru";
-   private static final String password = "123456";
-   private static final String shortPassword = "1";
+   private static final String NAME = "Qwesar";
+   private static final String EMAIL = "Qwesar@list.ru";
+   private static final String PASSWORD = "123456";
+   private static final String SHORT_PASSWORD = "1";
 
    public String getName(){
-       return name;
+       return NAME;
    }
    public String getEmail(){
-       return email;
+       return EMAIL;
    }
    public String getPassword(){
-       return password;
+       return PASSWORD;
    }
    public String getShortPassword(){
-       return shortPassword;
+       return SHORT_PASSWORD;
    }
 
 }

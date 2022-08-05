@@ -20,12 +20,12 @@ import static junit.framework.TestCase.assertTrue;
 
 @RunWith(Parameterized.class)
 public class LoginValidTest {
-    private final LoginPage loginPage = page(LoginPage.class);
-    private final HomePage homePage = page(HomePage.class);
-    private final ForgotPasswordPage forgotPasswordPage = page(ForgotPasswordPage.class );
-    private final RegisterPage registerPage = page(RegisterPage.class);
-    private final WorkWithUserAccount userAccount = new WorkWithUserAccount();
-    private static final TestData testData = new TestData();
+    private LoginPage loginPage = page(LoginPage.class);
+    private HomePage homePage = page(HomePage.class);
+    private ForgotPasswordPage forgotPasswordPage = page(ForgotPasswordPage.class );
+    private RegisterPage registerPage = page(RegisterPage.class);
+    private WorkWithUserAccount userAccount = new WorkWithUserAccount();
+    private static TestData testData = new TestData();
     //Запускаем проверку на Chrome и Yandex
     @Parameterized.Parameter
     public String browser;

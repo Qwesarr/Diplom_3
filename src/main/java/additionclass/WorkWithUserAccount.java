@@ -1,18 +1,17 @@
 package additionclass;
 
-import client.RestAssuredClient;
 import client.UserClient;
 import dto.UserDto;
+import lombok.extern.java.Log;
 import pageobject.LoginPage;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import static com.codeborne.selenide.Selenide.page;
 
-
+//Решил наследовать от UserClient, он в большем объеме используется в классе...
+@Log
 public class WorkWithUserAccount extends UserClient {
-    private static final LoginPage loginPage = page(LoginPage.class);
-    static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static LoginPage loginPage = page(LoginPage.class);
 
     public void createUser(String name, String email, String password) {
         UserDto userDto = new UserDto(name,email,password);
